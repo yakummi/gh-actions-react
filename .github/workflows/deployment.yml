@@ -12,6 +12,7 @@ jobs:
         run: npm run test
   lint:
     runs-on: ubuntu-latest
+    needs: test-name # какой работы необходимо дождаться чтобы зпустить эту работу
     steps:
       - name: Get the repository code
         uses: actions/checkout@v3 # встроенные action
@@ -21,6 +22,7 @@ jobs:
         run: npm run lint
   build:
     runs-on: ubuntu-latest
+    needs: lint
     steps:
       - name: Get the repository code
         uses: actions/checkout@v3 # встроенные action
